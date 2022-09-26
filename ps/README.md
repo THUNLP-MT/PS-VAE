@@ -1,4 +1,8 @@
-# Instructions
+# Instructions {ignore=True}
+
+## Quick Links {ignore=True}
+
+[toc]
 
 ## Requirements
 ```

@@ -1,7 +1,12 @@
-# Instructions
+# Instructions {ignore=True}
+
+## Quick Links {ignore=True}
+
+[toc]
 
 ## Requirements
-'''
+
+```
 python>=3.8
 tqdm
 torch>=1.8.1
@@ -9,7 +14,7 @@ pytorch-geometric  # Please refer to its documentation for installation
 pytorch-lightning>=1.5.7
 rdkit
 networkx>=2.5
-'''
+```
 
 You can use conda to install the rdkit package: `conda install -c conda-forge rdkit`. For pytorch-geometric, please refer to its [documentation](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html) to select the version that fits your OS/PyTorch/CUDA combination. For pytorch-lightning, it will **unexpectedly** upgrade your torch to fit its own latest version, so we recommand specifying its version when installing it. For example, with *torch==1.8.1*, you can specify *pytorch_lightning==1.5.7* to avoid this problem.
 
