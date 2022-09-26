@@ -30,12 +30,12 @@ Below is the overall diagram of our method:
 ### Codes
 ####  End-to-end Framework
 
-The directory **src** contains the complete codes of the principal subgraph extraction algorithm, our principal subgraph variational autoencoder (PS-VAE) and the checkpoints / data used in our experiments. If you are interested in training a PS-VAE on your own dataset or running some experiments on PS-VAE, please refer to the instructions provided in that directory.
+The directory [*src*](https://github.com/kxz18/PS-VAE/tree/main/src) contains the complete codes of the principal subgraph extraction algorithm, our principal subgraph variational autoencoder (PS-VAE) and the checkpoints / data used in our experiments. If you are interested in training a PS-VAE on your own dataset or running some experiments on PS-VAE, please refer to the instructions provided in that directory.
 
 
 #### Principal Subgraph Extraction
 
-We have also provided a polished version of the principal subgraph extraction algorithm decoupled with other codes in the directory **ps**, which we recommend you to use *if you are only interested in the extracted principal subgraphs as well as the subgraph-level decomposition of molecules*. Please refer to that directory for detailed instructions.
+We have also provided a polished version of the principal subgraph extraction algorithm decoupled with other codes in the directory [*ps*](https://github.com/kxz18/PS-VAE/tree/main/ps), which we recommend you to use *if you are only interested in the extracted principal subgraphs as well as the subgraph-level decomposition of molecules*. Please refer to that directory for detailed instructions.
 
 
 ### Examples

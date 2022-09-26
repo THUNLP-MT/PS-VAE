@@ -125,4 +125,4 @@ edges:
 ```
 The results contain the details of subgraph-level nodes and edges. The first part describes the indexes of the nodes and the smiles of the subgraphs they represent. The "atom map" attribute maps the index of the atom in the molecule to the index of the atom within the subgrah. The second part tells us how these subgraph-level nodes are connected with each other. For example, the first subgraph-level edge (0-5) means that there are bonds between node 0 and node 5. The bonds only contain a double bond connecting the atom 0 in node 0 and the atom 0 in node 5. An SVG figure of subgraph-level decomposition will also be exported as **example.svg**. Below is an SVG figure for the molecule in the above example:
 
-<img src="../images/example.svg" width="300">
+<img src="../figs/example.svg" width="300">
