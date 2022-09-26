@@ -8,7 +8,8 @@
 
 ```
 python>=3.8
-tqdm
+tqdm>=4.64.1
+joblib>=1.2.0
 torch>=1.8.1
 pytorch-geometric  # Please refer to its documentation for installation
 pytorch-lightning>=1.5.7
