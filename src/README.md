@@ -1,8 +1,17 @@
-# Instructions {ignore=True}
+# Instructions
 
-## Quick Links {ignore=True}
+## Quick Links
 
-[toc]
+- [Requirements](#requirements)
+- [Data and Checkpoints](#data-and-checkpoints)
+- [Usage](#usage)
+  - [Principal Subgraph Extraction](#principal-subgraph-extraction)
+  - [Training](#training)
+  - [Property Optimization](#property-optimization)
+  - [Constrained Property Optimization](#constrained-property-optimization)
+  - [Guacamol Benchmarks](#guacamol-benchmarks)
+    - [Distribution Learning](#distribution-learning)
+    - [Goal-directed Benchmarks](#goal-directed-benchmarks)
 
 ## Requirements
 
@@ -133,7 +142,7 @@ python guacamol_exps/distribution_learning.py \
 
 The corresponding bash script for test distribution learning on ZINC250K is located at *scripts/guaca_dist.sh*.
 
-#### Goal-directed benchmarks
+#### Goal-directed Benchmarks
 
 To run the goal-directed benchmarks, please first train a predictor of these properties from the embeded molecular latent variable as follows:
 

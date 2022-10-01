@@ -1,8 +1,11 @@
-# Instructions {ignore=True}
+# Instructions
 
-## Quick Links {ignore=True}
+## Quick Links
 
-[toc]
+- [Requirements](#requirements)
+- [Vocabulary Construction](#vocabulary-construction)
+- [Subgraph-level Decomposition](#subgraph-level-decomposition)
+
 
 ## Requirements
 ```
