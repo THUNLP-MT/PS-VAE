@@ -18,7 +18,7 @@ class SubgraphNode:
     def __init__(self, smiles: str, pos: int, atom_mapping: dict, kekulize: bool):
         self.smiles = smiles
         self.pos = pos
-        self.mol = smi2mol(smiles, kekulize)
+        self.mol = smi2mol(smiles, kekulize, sanitize=False)
         # map atom idx in the molecule to atom idx in the subgraph (submol)
         self.atom_mapping = copy(atom_mapping)
     

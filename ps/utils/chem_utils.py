@@ -3,9 +3,9 @@ from rdkit import Chem
 MAX_VALENCE = {'B': 3, 'Br':1, 'C':4, 'Cl':1, 'F':1, 'I':1, 'N':5, 'O':2, 'P':5, 'S':6} #, 'Se':4, 'Si':4}
 
 
-def smi2mol(smiles: str, kekulize=False):
+def smi2mol(smiles: str, kekulize=False, sanitize=True):
     '''turn smiles to molecule'''
-    mol = Chem.MolFromSmiles(smiles)
+    mol = Chem.MolFromSmiles(smiles, sanitize=sanitize)
     if kekulize:
         Chem.Kekulize(mol, True)
     return mol
@@ -33,12 +33,14 @@ def get_submol(mol, atom_indices, kekulize=False):
 def get_submol_atom_map(mol, submol, group, kekulize=False):
     # turn to smiles order
     smi = mol2smi(submol)
-    submol = smi2mol(smi, kekulize)
-    # special with N+ and N-
-    for atom in submol.GetAtoms():
-        if atom.GetSymbol() == 'N' and (atom.GetExplicitValence() == 3 and atom.GetFormalCharge() == 1) or atom.GetExplicitValence() < 3:
-            atom.SetNumRadicalElectrons(0)
-            atom.SetNumExplicitHs(2)
+    submol = smi2mol(smi, kekulize, sanitize=False)
+    # # special with N+ and N-
+    # for atom in submol.GetAtoms():
+    #     if atom.GetSymbol() != 'N':
+    #         continue
+    #     if (atom.GetExplicitValence() == 3 and atom.GetFormalCharge() == 1) or atom.GetExplicitValence() < 3:
+    #         atom.SetNumRadicalElectrons(0)
+    #         atom.SetNumExplicitHs(2)
     
     matches = mol.GetSubstructMatches(submol)
     old2new = { i: 0 for i in group }  # old atom idx to new atom idx
