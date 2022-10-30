@@ -17,7 +17,10 @@ def mol2smi(mol):
 
 def get_submol(mol, atom_indices, kekulize=False):
     if len(atom_indices) == 1:
-        return smi2mol(mol.GetAtomWithIdx(atom_indices[0]).GetSymbol(), kekulize)
+        atom_symbol = mol.GetAtomWithIdx(atom_indices[0]).GetSymbol()
+        if atom_symbol == 'Si':
+            atom_symbol = '[Si]'
+        return smi2mol(atom_symbol, kekulize)
     aid_dict = { i: True for i in atom_indices }
     edge_indices = []
     for i in range(mol.GetNumBonds()):
@@ -31,6 +34,8 @@ def get_submol(mol, atom_indices, kekulize=False):
 
 
 def get_submol_atom_map(mol, submol, group, kekulize=False):
+    if len(group) == 1:
+        return { group[0]: 0 }
     # turn to smiles order
     smi = mol2smi(submol)
     submol = smi2mol(smi, kekulize, sanitize=False)
