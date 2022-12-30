@@ -130,8 +130,10 @@ def graph_bpe(fname, vocab_len, vocab_path, cpus, kekulize):
                 details[atom][1] += cnts[atom]
     # bpe process
     add_len = vocab_len - len(selected_smis)
+    print_log(f'Added {len(selected_smis)} atoms, {add_len} principal subgraphs to extract')
+    pbar = tqdm(total=add_len)
     pool = mp.Pool(cpus)
-    for _ in tqdm(range(add_len)):
+    while len(selected_smis) < vocab_len:
         res_list = pool.map(freq_cnt, mols)  # each element is (freq, mol) (because mol will not be synced...)
         freqs, mols = {}, []
         for freq, mol in res_list:
@@ -149,8 +151,14 @@ def graph_bpe(fname, vocab_len, vocab_path, cpus, kekulize):
         # merge
         for mol in mols:
             mol.merge(merge_smi)
+        if merge_smi in details:  # corner case: re-extracted from another path
+            continue
         selected_smis.append(merge_smi)
+        print(merge_smi, max_cnt)
+        assert merge_smi not in details, details[merge_smi]
         details[merge_smi] = [cnt_atom(merge_smi), max_cnt]
+        pbar.update(1)
+    pbar.close()
     print_log('sorting vocab by atom num')
     selected_smis.sort(key=lambda x: details[x][0], reverse=True)
     pool.close()
