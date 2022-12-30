@@ -154,8 +154,6 @@ def graph_bpe(fname, vocab_len, vocab_path, cpus, kekulize):
         if merge_smi in details:  # corner case: re-extracted from another path
             continue
         selected_smis.append(merge_smi)
-        print(merge_smi, max_cnt)
-        assert merge_smi not in details, details[merge_smi]
         details[merge_smi] = [cnt_atom(merge_smi), max_cnt]
         pbar.update(1)
     pbar.close()
