@@ -46,7 +46,7 @@ smiles = 'COc1cc(C=NNC(=O)c2ccc(O)cc2O)ccc1OCc1ccc(Cl)cc1'
 tokenizer = Tokenizer('path/to/the/vocabulary')
 # piece-level decomposition
 mol = tokenizer(smiles)
-print('piece level decomposition:')
+print('subgraph level decomposition:')
 print(mol)
 ```
 Here the variable `mol` is a Molecule object defined in molecule.py, and `print(mol)` will produce a subgraph-level description of the molecule. In this case, the output might be like:
