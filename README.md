@@ -5,11 +5,13 @@ This repo contains the codes for our paper [Molecule Generation by Principal Sub
 if you use the code, please cite the following paper:
 
 ```
-@article{kong2021molecule,
-    title={Molecule Generation by Principal Subgraph Mining and Assembling},
-    author={Kong, Xiangzhe and Huang, Wenbing and Tan, Zhixing and Liu, Yang},
-    journal={Advances in neural information processing systems},
-    year={2022}
+@article{kong2022molecule,
+  title={Molecule Generation by Principal Subgraph Mining and Assembling},
+  author={Kong, Xiangzhe and Huang, Wenbing and Tan, Zhixing and Liu, Yang},
+  journal={Advances in Neural Information Processing Systems},
+  volume={35},
+  pages={2550--2563},
+  year={2022}
 }
 ```
 
