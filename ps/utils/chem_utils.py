@@ -11,8 +11,8 @@ def smi2mol(smiles: str, kekulize=False, sanitize=True):
     return mol
 
 
-def mol2smi(mol):
-    return Chem.MolToSmiles(mol)
+def mol2smi(mol, canonical=True):
+    return Chem.MolToSmiles(mol, canonical=canonical)
 
 
 def get_submol(mol, atom_indices, kekulize=False):

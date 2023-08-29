@@ -235,7 +235,7 @@ class Tokenizer:
                 if i != j:
                     ad_mat[i][j] = ad_mat[j][i] = 1
         group_idxs = [x[1] for x in res]
-        return Molecule(smiles, group_idxs, self.kekulize)
+        return Molecule(rdkit_mol, group_idxs, self.kekulize)
 
     def idx_to_subgraph(self, idx):
         return self.idx2subgraph[idx]
