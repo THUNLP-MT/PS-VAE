@@ -15,18 +15,23 @@
 
 ## Requirements
 
-```
-python>=3.8
-tqdm>=4.64.1
-joblib>=1.2.0
-torch>=1.8.1
-pytorch-geometric  # Please refer to its documentation for installation
-pytorch-lightning>=1.5.7
-rdkit
-networkx>=2.5
+First install pytorch by:
+
+```bash
+pip install torch==1.8.1+cu101 torchvision==0.9.1+cu101 torchaudio==0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
-You can use conda to install the rdkit package: `conda install -c conda-forge rdkit`. For pytorch-geometric, please refer to its [documentation](https://pytorch-geometric.readthedocs.io/en/latest/notes/installation.html) to select the version that fits your OS/PyTorch/CUDA combination. For pytorch-lightning, it will **unexpectedly** upgrade your torch to fit its own latest version, so we recommand specifying its version when installing it. For example, with *torch==1.8.1*, you can specify *pytorch_lightning==1.5.7* to avoid this problem.
+Then install pytorch_geometric:
+
+```bash
+pip install torch_geometric torch_scatter torch_sparse torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-1.8.1+cu101.html
+```
+
+Finally install other packages by:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Data and Checkpoints
 We have provided the ZINC250K and QM9 dataset in *PS-VAE/data* as well as the train/valid/test splits used in our experiments. We also uploaded the checkpoints in our experiments to the [Google Drive](https://drive.google.com/drive/folders/1FeKZFJAM-mS_Rj4LD9biMTxKLmSVsG2V?usp=sharing). If you want to use them or run the bash scripts of our experiments, please download and extract them to *PS-VAE/ckpts*.
