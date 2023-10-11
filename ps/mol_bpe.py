@@ -117,7 +117,13 @@ def graph_bpe(fname, vocab_len, vocab_path, cpus, kekulize):
     with open(fname, 'r') as fin:
         smis = list(map(lambda x: x.strip(), fin.readlines()))
     # init to atoms
-    mols = [MolInSubgraph(smi2mol(smi, kekulize), kekulize) for smi in smis]
+    mols = []
+    for smi in tqdm(smis):
+        try:
+            mol = MolInSubgraph(smi2mol(smi, kekulize), kekulize)
+            mols.append(mol)
+        except Exception as e:
+            print_log(f'Parsing {smi} failed. Skip.', level='ERROR')
     # loop
     selected_smis, details = list(MAX_VALENCE.keys()), {}   # details: <smi: [atom cnt, frequency]
     # calculate single atom frequency
@@ -229,7 +235,7 @@ class Tokenizer:
                 if i != j:
                     ad_mat[i][j] = ad_mat[j][i] = 1
         group_idxs = [x[1] for x in res]
-        return Molecule(smiles, group_idxs, self.kekulize)
+        return Molecule(rdkit_mol, group_idxs, self.kekulize)
 
     def idx_to_subgraph(self, idx):
         return self.idx2subgraph[idx]

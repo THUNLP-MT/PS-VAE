@@ -1,10 +1,12 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
 from copy import copy, deepcopy
+from typing import Union
 
 import networkx as nx
 from rdkit import Chem
 from rdkit.Chem.Draw import rdMolDraw2D
+from rdkit.Chem.rdchem import Mol as RDKitMol
 import numpy as np
 
 from utils.chem_utils import smi2mol, mol2smi
@@ -65,12 +67,16 @@ class SubgraphEdge:
 class Molecule(nx.Graph):
     '''molecule represented in subgraph-level'''
 
-    def __init__(self, smiles: str=None, groups: list=None, kekulize: bool=False):
+    def __init__(self, mol: Union[str, RDKitMol]=None, groups: list=None, kekulize: bool=False):
         super().__init__()
-        if smiles is None:
+        if mol is None:
             return
+
+        if isinstance(mol, str):
+            smiles, rdkit_mol = mol, smi2mol(mol, kekulize)
+        else:
+            smiles, rdkit_mol = mol2smi(mol), mol
         self.graph['smiles'] = smiles
-        rdkit_mol = smi2mol(smiles, kekulize)
         # processing atoms
         aid2pos = {}
         for pos, group in enumerate(groups):
