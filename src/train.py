@@ -88,7 +88,7 @@ def parse():
 
     # model parameters
     parser.add_argument('--props', type=str, nargs='+', choices=['qed', 'sa', 'logp', 'gsk3b', 'jnk3'],
-                        help='properties to predict')
+                        default=['qed', 'logp'], help='properties to predict')
     parser.add_argument('--predictor_hidden_dim', type=int, default=200,
                         help='hidden dim of predictor (MLP)')
     parser.add_argument('--node_hidden_dim', type=int, default=100,
