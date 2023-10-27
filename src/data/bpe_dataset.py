@@ -164,6 +164,8 @@ class BPEMolDataset(Dataset):
         data_list = []
         for s in tqdm(smiles):
             mol = chem_utils.smiles2molecule(s, kekulize=True)
+            if mol is None:
+                continue
             data_list.append(self.process_step1(mol, self.tokenizer))
         torch.save(data_list, self.save_path)
         return data_list

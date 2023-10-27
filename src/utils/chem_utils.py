@@ -66,6 +66,8 @@ class GeneralVocab:
 def smiles2molecule(smiles: str, kekulize=True):
     '''turn smiles to molecule'''
     mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return None
     Chem.RemoveStereochemistry(mol)
     if kekulize:
         Chem.Kekulize(mol)
