@@ -204,6 +204,9 @@ class Tokenizer:
             mol = smi2mol(mol, self.kekulize)
         else:
             smiles = mol2smi(mol)
+        if '.' in smiles:
+            fragments = smiles.split('.')
+            return [self.tokenize(frag) for frag in fragments]
         rdkit_mol = mol
         mol = MolInSubgraph(mol, kekulize=self.kekulize)
         while True:
@@ -289,8 +292,11 @@ if __name__ == '__main__':
     print('Tokenized mol: ')
     print(mol)
     print('Reconstruct smiles to make sure it is right: ')
-    smi = mol.to_smiles()
+    if isinstance(mol, list):
+        smi = '.'.join([frag.to_smiles() for frag in mol])
+    else:
+        smi = mol.to_smiles()
+        mol.to_SVG('example.svg')
     print(smi)
     assert smi == args.smiles
     print('Assertion test passed')
-    mol.to_SVG('example.svg')
